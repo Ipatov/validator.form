@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	
+	<style>
+		.error{
+			border: 1px solid red;
+		}
+		
+		.my_error_class{
+			border: 1px solid yellow;
+		}
+	</style>
+<body>
+	<h1>Test form</h1>
+	<form class="validate" action="#" method="post">
+		<label>Empty field<label>
+		<input type="text" data-validate="empty" /> <br><br>
+		
+		<label>Email field<label>
+		<input type="text" data-validate="email" /> <br><br>
+		
+		<input type="submit" value="Submit form">
+	</form>
+
+	<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="validator.form.js"></script>
+</body>
+</html>
