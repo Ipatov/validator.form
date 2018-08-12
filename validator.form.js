@@ -35,11 +35,14 @@ var ValidateForm = {
 			switch($(this).data("validate")){
 				case "empty":
 					error = ValidateForm.validateEmpty($(this).val());
-					
+					break;
 				case "email":
 					error = ValidateForm.validateEmail($(this).val());
+					break;
+				case "checked":
+					error = ValidateForm.validateChecked($(this));
+					break;
 			}
-			
 			if(!error) {
 				$(this).addClass(ValidateForm.$params.errorClass);
 				$noErrors = false;
@@ -60,12 +63,14 @@ var ValidateForm = {
 	},
 	
 	// проверка на валидность email
-	validateEmail: function(value){
-		if($.trim(value) == "") {
-			return false;
-		}else{
-			return true;
-		}
+	validateEmail: function(email){
+		var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return reg.test(String(email).toLowerCase());
+	},
+	
+	// проверка выбранного чекбокса
+	validateChecked: function($checkbox){
+		return $checkbox.prop('checked');
 	},	
 	
 };
